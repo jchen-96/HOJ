@@ -29,7 +29,7 @@ int main(int argc, char const *argv[])
             {
                 int temp = a[n_1] - '0' + b[m_1] - '0' + (bb ? 1 : 0);
                 tt = temp % 10;
-                res[c_i] = tt+'0';
+                res[c_i] = tt + '0';
                 bb = temp / 10;
                 n_1--;
                 m_1--;
@@ -37,7 +37,7 @@ int main(int argc, char const *argv[])
             else if (n_1 >= 0)
             {
                 int temp = a[n_1] - '0' + (bb ? 1 : 0);
-                tt = temp % 10+'0';
+                tt = temp % 10 + '0';
                 res[c_i] = tt;
                 bb = temp / 10;
                 n_1--;
@@ -45,21 +45,22 @@ int main(int argc, char const *argv[])
             else
             {
                 int temp = b[m_1] - '0' + (bb ? 1 : 0);
-                tt = temp %10 +'0';
+                tt = temp % 10 + '0';
                 res[c_i] = tt;
                 bb = temp / 10;
                 m_1--;
             }
             c_i++;
         }
-        if(bb)
+        if (bb)
             res[c_i] = '1';
 
-        if(i)
+        if (i)
             cout << endl;
-        cout << "Case " << i+1 <<":"<< endl;
+        cout << "Case " << i + 1 << ":" << endl;
         cout << a << " + " << b << " = ";
-        for (int j = c_i; j >= 0;j--){
+        for (int j = c_i; j >= 0; j--)
+        {
             cout << res[j];
         }
         cout << endl;
