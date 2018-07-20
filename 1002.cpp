@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
-
-//大数相加 WA
+#include <cstdio>
+//大数相加 AC
 
 #define MAX_B 1005
 
@@ -13,57 +13,71 @@ char res[MAX_B];
 int main(int argc, char const *argv[])
 {
     int n;
-    cin >> n;
+    scanf("%d", &n);
     for (int i = 0; i < n; i++)
     {
         cin >> a >> b;
         int n = strlen(a);
         int m = strlen(b);
-        int n_1 = n - 1, m_1 = m - 1;
+        n--;
+        m--;
         bool bb = false;
         int tt = 0;
         int c_i = 0;
-        while (n_1 >= 0 || m_1 >= 0)
+        while (n >= 0 || m >= 0)
         {
-            if (n_1 >= 0 && m_1 >= 0)
+            if (n >= 0 && m >= 0)
             {
-                int temp = a[n_1] - '0' + b[m_1] - '0' + (bb ? 1 : 0);
+                int temp = a[n] - '0' + b[m] - '0' + (bb ? 1 : 0);
                 tt = temp % 10;
                 res[c_i] = tt + '0';
                 bb = temp / 10;
-                n_1--;
-                m_1--;
+                n--;
+                m--;
             }
-            else if (n_1 >= 0)
+            else if (n >= 0)
             {
-                int temp = a[n_1] - '0' + (bb ? 1 : 0);
+                int temp = a[n] - '0' + (bb ? 1 : 0);
                 tt = temp % 10 + '0';
                 res[c_i] = tt;
                 bb = temp / 10;
-                n_1--;
+                n--;
             }
             else
             {
-                int temp = b[m_1] - '0' + (bb ? 1 : 0);
+                int temp = b[m] - '0' + (bb ? 1 : 0);
                 tt = temp % 10 + '0';
                 res[c_i] = tt;
                 bb = temp / 10;
-                m_1--;
+                m--;
             }
             c_i++;
         }
         if (bb)
-            res[c_i] = '1';
+            res[c_i++] = '1';
+
+        // 控制输出部分
 
         if (i)
             cout << endl;
         cout << "Case " << i + 1 << ":" << endl;
         cout << a << " + " << b << " = ";
-        for (int j = c_i; j >= 0; j--)
+        while (res[c_i-1] == '0')
         {
-            cout << res[j];
+            c_i--;
         }
-        cout << endl;
+        if (c_i == 0)
+        {
+            cout << '0' << endl;
+        }
+        else
+        {
+            for (int j = c_i-1; j >= 0; j--)
+            {
+                cout << res[j];
+            }
+            cout << endl;
+        }
     }
     // getchar();
     return 0;

@@ -1,13 +1,12 @@
-// 最大连续子数组之和
+// 最大连续子数组之和，要求出连续子数组的开始和结束位置
 
-#include <stdio.h>
+#include <cstdio>
 int main()
 {
     int t, n, maxSum, maxHere, beginMax, endMax, beginHere, endHere;
     int a[100002];
-    int max_begin[100002],dp[];
+    int max_begin[100002],dp[100002];
     scanf("%d", &t);
-    caseNum = 0;
     for (int i = 0; i < t;i++)
     {
         scanf("%d", &n);
